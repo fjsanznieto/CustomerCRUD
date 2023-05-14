@@ -1,0 +1,65 @@
+﻿@page "/customer/create"
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@using CustomerCRUD.Shared
+@using static CustomerCRUD.Shared.Customer;
+
+<h3>Añadir Cliente</h3>
+
+<EditForm Model="@_customer" OnValidSubmit="Post">
+    <div class="form-group">
+        <label>Nombre: </label>
+        <InputText @bind-Value="_customer.Name" />
+    </div>
+    <div class="form-group">
+        <label>Apellidos</label>
+        <InputTextArea @bind-Value="_customer.Surname" />
+    </div>
+    <div class="form-group">
+        <label>Sexo: </label>
+        <InputRadioGroup @bind-Value="_customer.Gender">
+            @foreach (var gender in (GenderEnum[])Enum.GetValues(typeof(GenderEnum)))
+            {
+                <InputRadio Value="gender" />
+                <text>&nbsp;</text>
+
+                @gender
+
+                <br>
+            }
+        </InputRadioGroup>
+    </div>
+    <div class="form-group">
+        <label>Fecha de Nacimiento: </label>
+        <InputDate @bind-Value="_customer.BirthDate" />
+    </div>
+    <div class="form-group">
+        <label>Dirección: </label>
+        <InputTextArea @bind-Value="_customer.Address" />
+    </div>
+    <div class="form-group">
+        <label>País: </label>
+        <InputText @bind-Value="_customer.Country" />
+    </div>
+    <div class="form-group">
+        <label>Código Postal: </label>
+        <InputNumber @bind-Value="_customer.PostalCode" />
+    </div>
+    <div class="form-group">
+        <label>Email: </label>
+        <InputText @bind-Value="_customer.Email" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-success" value="Agregar Cliente" />
+    </div>
+</EditForm>
+
+@code {
+    private Customer _customer = new();
+    private async Task Post()
+    {
+        await Http.PostAsJsonAsync<Customer>("/customer/", _customer);
+        Navigation.NavigateTo("/customers");
+    }
+}
