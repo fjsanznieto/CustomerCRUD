@@ -1,7 +1,3 @@
-**Tabla de Contenidos**
-
-[TOC]
-
 # Problema
 - Creación, listado, edición y eliminación de "Clientes".
 
