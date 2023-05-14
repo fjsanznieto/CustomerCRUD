@@ -19,3 +19,5 @@
 - El enunciado del problema es deliberadamente abierto (incluso confuso), por tanto, se valorará la proactividad.
 
 - Se valorará el estilo de programación, orden, método de trabajo y presentación del resultado a la hora de afrontar un problema y su solución.
+
+![](https://notbyai.fyi/wp-content/themes/notbyai/img/written-by-human-not-by-ai-white.svg)
